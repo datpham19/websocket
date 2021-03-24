@@ -158,6 +158,6 @@ function sendToOtherUser(connection, message) {
   connection.send(JSON.stringify(message));
 }
 
-server.listen(serverPort, () => {
-  console.log(`Websocket server started on port ` + serverPort);
+server.listen(PORT, () => {
+  console.log(`Websocket server started on port ` + PORT);
 });
