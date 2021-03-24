@@ -1,10 +1,22 @@
-const serverPort = 9090,
-  http = require("http"),
-  express = require("express"),
-  app = express(),
-  server = http.createServer(app),
-  WebSocket = require("ws"),
-  wss = new WebSocket.Server({ server });
+const express = require('express');
+const { Server } = require('ws');
+
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const wss = new Server({ server });
+
+// const serverPort = 9090,
+//   http = require("http"),
+//   express = require("express"),
+//   app = express(),
+//   server = http.createServer(app),
+//   WebSocket = require("ws"),
+//   wss = new WebSocket.Server({ server });
 
 // var webSocketServ = require("ws").Server;
 
