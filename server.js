@@ -1,18 +1,8 @@
-DEBUG = process.env.DEBUG;
-if (DEBUG === false) {
-  serverOptions = {
-    key: fs.readFileSync(process.env.KEY_DIR),
-    cert: fs.readFileSync(process.env.KEY_CERT),
-  };
-} else {
-  serverOptions = {};
-}
-
 const serverPort = 9090,
   http = require("https"),
   express = require("express"),
   app = express(),
-  server = http.createServer(serverOptions, app),
+  server = http.createServer(app),
   WebSocket = require("ws"),
   wss = new WebSocket.Server({ server });
 
